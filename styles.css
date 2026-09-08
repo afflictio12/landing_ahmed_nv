@@ -1488,12 +1488,12 @@ body {
 
 /* Обгортка для позиціонування */
 .hero-image-wrapper {
-    position: relative; /* Залишаємо, щоб анімація працювала коректно */
+    position: relative; 
     display: flex;
-    flex-direction: column; /* Вибудовує елементи зверху вниз */
-    align-items: center;    /* Центрує їх відносно один одного */
+    flex-direction: column; 
+    align-items: center;    
+    animation: floatHead 5s ease-in-out infinite; /* Голова левітує тут */
 }
-
 /* Видаляємо тінь та рух із самої картинки, бо тепер рухається обгортка */
 .hero-image-wrapper .hero-image {
     box-shadow: none; 
@@ -1503,16 +1503,14 @@ body {
 
 /* Стилі самої плашки */
 .ahmed-plaque {
-    margin-top: 15px; 
+    margin-top: 25px; 
     position: relative; 
-    
     background: rgba(20, 20, 35, 0.45); 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     border-left: 1px solid rgba(255, 255, 255, 0.3);
-    
     border-radius: 14px;
     padding: 0.8rem 1.6rem; 
     text-align: center; 
@@ -1520,10 +1518,8 @@ body {
     white-space: nowrap;
     z-index: 10;
     
-    /* Окрема анімація для плашки (інший час = розсинхрон з головою) */
-    animation: floatPlaque 6.5s ease-in-out infinite;
+    animation: floatPlaque 4s ease-in-out infinite; 
 }
-
 .plaque-subtitle {
     display: block;
     color: var(--accent); /* Ваш рожевий акцентний колір */
@@ -1585,22 +1581,27 @@ body {
 .hero-image.floating-head {
     background: transparent;
     border: none;
-    max-width: 450px; /* Великий розмір голови */
+    box-shadow: none;
+    max-width: 450px; 
     width: 100%;
     height: auto;
     display: block;
     filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.4));
-    animation: floatHead 5s ease-in-out infinite;
+    
+    /* Плавний перехід для збільшення */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
+    transform-origin: center center;
 }
-
-/* Анімація суто для голови (більші кути нахилу) */
+.hero-image.floating-head:hover {
+    transform: scale(1.1); 
+    filter: drop-shadow(0 30px 35px rgba(251, 191, 36, 0.35)); 
+}
 @keyframes floatHead {
     0%, 100% { transform: translateY(0) rotate(-2deg); }
-    50% { transform: translateY(-20px) rotate(3deg); }
+    50% { transform: translateY(-18px) rotate(2deg); }
 }
 
-/* Анімація суто для плашки (менша амплітуда, нахил в іншу сторону) */
 @keyframes floatPlaque {
-    0%, 100% { transform: translateY(0) rotate(1deg); }
-    50% { transform: translateY(-10px) rotate(-1.5deg); }
+    0%, 100% { transform: translateY(0) rotate(5deg); }
+    50% { transform: translateY(-8px) rotate(-1.5deg); }
 }
