@@ -1442,15 +1442,15 @@ body {
         top: 15px;
         right: 15px;
         padding: 0.3rem 0.6rem;
-    }пге 
+    }
 
     .floating-nav-logo {
-        height: 36px; /* Трохи менший логотип у плаваючій кнопці */
+        height: 36px; 
     }
 
     .title-logo {
-        height: 5px; /* На телефоні робимо його трохи меншим */
-        margin-left: auto; /* Центруємо логотип разом із заголовком */
+        height: 55px; 
+        margin-left: auto; 
         margin-right: auto;
     }
 }
@@ -1604,4 +1604,11 @@ body {
 @keyframes floatPlaque {
     0%, 100% { transform: translateY(0) rotate(5deg); }
     50% { transform: translateY(-8px) rotate(-1.5deg); }
+}
+
+.game-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
